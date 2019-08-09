@@ -8,16 +8,25 @@ Here I showed Two Types For Method For GetDeviceMacAddress . One For Activity An
 The Main Thing is the Permission :
 
 
+And add this Permission in your Manifest file :
+------------------------------------------------------------------------------------------------------------------------------------
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    ------------------------------------------------------------------------------------------------------------------------------
+    
+
  //permission check for the activity
+ 
     public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
@@ -35,13 +44,11 @@ The Main Thing is the Permission :
                         })
                         .create()
                         .show();
-
-
-            } else {
-//                // No explanation needed, we can request the permission.
-//                ActivityCompat.requestPermissions(getActivity(),
-//                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                        MY_PERMISSIONS_REQUEST_LOCATION);
+                        } else {
+               // No explanation needed, we can request the permission.
+               ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
                 requestPermissions( new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
             }
@@ -74,4 +81,16 @@ The Main Thing is the Permission :
         }
     }
 
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------
+----------------------------------
+----------------------
+--------------
+--------
+----
+--
+-
 
